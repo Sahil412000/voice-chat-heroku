@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
@@ -19,7 +21,7 @@ app.engine("handlebars", customHandlebars.engine);
 app.set("view engine", "handlebars");
 
 //enable user access to public folder
-app.use("/files", express.static("public"));
+app.use("/static", express.static("public"));
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -54,5 +56,5 @@ io.on("connection", function (socket) {
 });
 
 http.listen(port, () => {
-  console.log("the app is run in port 3000!");
+  console.log(`Server running at ${port}`);
 });
