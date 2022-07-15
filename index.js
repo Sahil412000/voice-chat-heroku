@@ -21,9 +21,9 @@ app.engine("handlebars", customHandlebars.engine);
 app.set("view engine", "handlebars");
 
 //enable user access to public folder
-app.use("/static", express.static("public"));
+app.use("/files", express.static("public"));
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   res.render("index");
 });
 
